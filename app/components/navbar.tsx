@@ -37,6 +37,7 @@ export default function Navbar() {
         href="https://developer.nytimes.com/"
         rel="noopener noreferrer"
         target={'_blank'}
+        aria-label="Data provided by The New York Times"
       >
         <img
           src="/logos/poweredby_nytimes_30a.png"

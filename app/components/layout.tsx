@@ -1,6 +1,6 @@
 import Footer from './footer'
 import Navbar from './navbar'
-import HeaderSection from './sections/header-section'
+import Submenu from './sections/submenu'
 
 function SidebarLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -52,7 +52,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Navbar></Navbar>
       </SidebarNav>
       <VScrollContent>
-        <HeaderSection></HeaderSection>
+        <Submenu></Submenu>
         <VScrollChild>{children}</VScrollChild>
         <Footer></Footer>
       </VScrollContent>

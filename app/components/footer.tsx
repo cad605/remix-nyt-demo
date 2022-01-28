@@ -8,6 +8,7 @@ export default function Footer() {
             href="https://developer.nytimes.com/"
             rel="noopener noreferrer"
             target={'_blank'}
+            aria-label="Data provided by The New York Times"
           >
             <img
               src="/logos/poweredby_nytimes_200c.png"
