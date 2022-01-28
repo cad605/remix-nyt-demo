@@ -41,7 +41,7 @@ function MissingPage() {
   return (
     <ErrorPage
       title={"404 - Oh no, you found a page that's missing stuff."}
-      subtitle={`"${pathname}" is not a page on christopherdonnelly.xyz. Sorry!`}
+      subtitle={`"${pathname}" is not a page. Sorry!`}
     />
   )
 }

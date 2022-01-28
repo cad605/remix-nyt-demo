@@ -2,12 +2,7 @@ import * as React from 'react'
 import { useId } from '@reach/auto-id'
 
 function Label({ className, ...labelProps }: JSX.IntrinsicElements['label']) {
-  return (
-    <label
-      className="block text-xl text-zinc-800 font-medium"
-      {...labelProps}
-    />
-  )
+  return <label className={className} {...labelProps} />
 }
 
 type InputProps =
@@ -130,4 +125,4 @@ const Button = React.forwardRef<
   )
 })
 
-export { Label, Input, InputError, Field, ErrorPanel }
+export { Label, Input, InputError, Field, ErrorPanel, Button }

@@ -1,5 +1,5 @@
 import { Form, NavLink } from 'remix'
-import { UserIcon } from './icons'
+import { OutlineFavoriteIcon, SearchIcon, UserIcon } from './icons'
 
 type PrimaryNavLinkProps = {
   to: string
@@ -20,16 +20,19 @@ function PrimaryNavLink({ to, children }: PrimaryNavLinkProps) {
 
 export default function Navbar() {
   return (
-    <header>
-      <nav className="flex justify-around py-3 bg-gray-900 text-gray-500 lg:flex-col lg:py-4 lg:px-4 lg:justify-start lg:gap-6">
-        <PrimaryNavLink to="/login">
+    <nav className="flex justify-around py-3 bg-gray-100 text-slate-900 md:flex-col md:py-4 md:px-4 md:justify-start md:gap-6">
+      <PrimaryNavLink to="/search">
+        <SearchIcon></SearchIcon>
+      </PrimaryNavLink>
+      <PrimaryNavLink to="/bookmarks">
+        <OutlineFavoriteIcon></OutlineFavoriteIcon>
+      </PrimaryNavLink>
+      <div className="hidden md:block md:flex-1" />
+      <Form method="post" action="/auth/logout">
+        <button type="submit">
           <UserIcon></UserIcon>
-        </PrimaryNavLink>
-        <div className="hidden lg:block lg:flex-1" />
-        <Form method="post" action="/auth/logout">
-          <button type="submit">Logout</button>
-        </Form>
-      </nav>
-    </header>
+        </button>
+      </Form>
+    </nav>
   )
 }

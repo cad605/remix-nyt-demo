@@ -10,7 +10,7 @@ import type { MetaFunction } from 'remix'
 import tailwind from './tailwind.css'
 import Navbar from './components/navbar'
 import Footer from './components/footer'
-import Layout from './components/layout'
+import { Layout } from './components/layout'
 
 export function links() {
   return [{ rel: 'stylesheet', href: tailwind }]
@@ -36,10 +36,8 @@ function Document({
         <title>{title}</title>
         <Links />
       </head>
-      <body className="bg-gray-100 text-gray-800 fixed overflow-hidden h-full w-full">
-        <Navbar></Navbar>
-        <Layout children={children}></Layout>
-        <Footer></Footer>
+      <body className="bg-gray-200 text-gray-800 fixed overflow-hidden h-full w-full">
+        <Layout>{children}</Layout>
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === 'development' ? <LiveReload /> : null}
