@@ -4,29 +4,54 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
-} from "remix";
-import type { MetaFunction } from "remix";
+  ScrollRestoration,
+} from 'remix'
+import type {MetaFunction} from 'remix'
+import tailwind from './tailwind.css'
+import Navbar from './components/navbar'
+import Footer from './components/footer'
+import Layout from './components/layout'
+
+export function links() {
+  return [{rel: 'stylesheet', href: tailwind}]
+}
 
 export const meta: MetaFunction = () => {
-  return { title: "New Remix App" };
-};
+  return {title: 'NYT | Remix Demo | Home'}
+}
 
-export default function App() {
+function Document({
+  children,
+  title = `NYT | A Remix Demo using the NYT API`,
+}: {
+  children: React.ReactNode
+  title?: string
+}) {
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
+        <title>{title}</title>
         <Links />
       </head>
-      <body>
-        <Outlet />
+      <body className="bg-gray-100 text-gray-800 fixed overflow-hidden h-full w-full">
+        <Navbar></Navbar>
+        <Layout children={children}></Layout>
+        <Footer></Footer>
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === "development" && <LiveReload />}
+        {process.env.NODE_ENV === 'development' ? <LiveReload /> : null}
       </body>
     </html>
-  );
+  )
+}
+
+export default function App() {
+  return (
+    <Document>
+      <Outlet />
+    </Document>
+  )
 }
