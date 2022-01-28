@@ -1,11 +1,10 @@
-import type { LoaderFunction } from 'remix'
-
-type LoaderData = {}
-
-export const loader: LoaderFunction = (): Array<LoaderData> => {
-  return []
-}
-
 export default function Index() {
-  return <div></div>
+  return (
+    <div>
+      <main className="flex flex-col">
+        <article></article>
+        <article></article>
+      </main>
+    </div>
+  )
 }

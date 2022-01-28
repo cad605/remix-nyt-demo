@@ -1,5 +1,6 @@
 import Footer from './footer'
 import Navbar from './navbar'
+import HeaderSection from './sections/header-section'
 
 function SidebarLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,7 +11,7 @@ function SidebarLayout({ children }: { children: React.ReactNode }) {
 function SidebarNav({ children }: { children: React.ReactNode }) {
   return (
     <header
-      className="m-4 flex flex-col overflow-hidden md:flex-row border-2 rounded-xl"
+      className="m-4 flex flex-col overflow-hidden md:flex-row rounded-xl"
       children={children}
     />
   )
@@ -20,7 +21,7 @@ function VScrollContent({ children }: { children: React.ReactNode }) {
   return (
     <div
       className="flex-1 flex flex-col ml-6 mr-6 overflow-y-scroll overflow-x-hidden md:overflow-hidden"
-      style={{ scrollSnapType: 'y mandatory' }}
+      // style={{ scrollSnapType: 'y mandatory' }}
       children={children}
     />
   )
@@ -35,14 +36,10 @@ export function VScrollChild({
 }) {
   return (
     <div
-      className={
-        'flex flex-col h-full flex-shrink-0 w-full order-1 lg:w-1/2 border-l last:border-r' +
-        ' ' +
-        className
-      }
-      style={{
-        scrollSnapAlign: 'start',
-      }}
+      className={'mt-4 grow flex flex-col' + ' ' + className}
+      // style={{
+      //   scrollSnapAlign: 'start',
+      // }}
       children={children}
     />
   )
@@ -55,7 +52,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Navbar></Navbar>
       </SidebarNav>
       <VScrollContent>
-        <main className="grow">{children}</main>
+        <HeaderSection></HeaderSection>
+        <VScrollChild>{children}</VScrollChild>
         <Footer></Footer>
       </VScrollContent>
     </SidebarLayout>
