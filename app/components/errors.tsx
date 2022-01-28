@@ -10,13 +10,7 @@ function ErrorPage({ error, ...props }: ErrorPageProps) {
   return (
     <>
       <noscript>
-        <div
-          style={{
-            backgroundColor: 'black',
-            color: 'white',
-            padding: 30,
-          }}
-        >
+        <div className="">
           <h1 style={{ fontSize: '2em' }}>{props.title}</h1>
           <p style={{ fontSize: '1.5em' }}>{props.subtitle}</p>
           <small>

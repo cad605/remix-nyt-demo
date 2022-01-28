@@ -1,5 +1,6 @@
-import { NavLink } from 'remix'
-import Logo from '../logo'
+import { ChangeEvent } from 'react'
+import { NavLink, useNavigate } from 'remix'
+import Logo from './logo'
 
 const menuLinks: Array<string> = [
   'world',
@@ -38,11 +39,16 @@ const menuLinks: Array<string> = [
 ]
 
 export default function Submenu() {
+  const navigate = useNavigate()
+  function handleMenuSelect(event: ChangeEvent<HTMLSelectElement>) {
+    const value = event.target.value
+    return navigate(`/section/${value}`, { replace: true })
+  }
   return (
-    <div>
+    <div className="pt-2 pb-2 border-b-2 border-dotted border-slate-600">
       <Logo></Logo>
-      <div className="mt-4 flex flex-col space-y-1 justify-evenly border-b-2 border-dotted border-zinc-600 pb-2 sm:flex-row sm:space-y-0">
-        {menuLinks.slice(0, 5).map(link => (
+      <div className="hidden md:flex md:flex-row md:space-y-0 flex-col items-center space-y-1 justify-evenly">
+        {menuLinks.slice(0, 9).map(link => (
           <NavLink
             key={link}
             to={`/section/${link}`}
@@ -55,6 +61,15 @@ export default function Submenu() {
             {link}
           </NavLink>
         ))}
+      </div>
+      <div className="md:hidden">
+        <select onChange={handleMenuSelect}>
+          {menuLinks.slice(0, 9).map(link => (
+            <option key={link} value={link}>
+              {link}
+            </option>
+          ))}
+        </select>
       </div>
     </div>
   )

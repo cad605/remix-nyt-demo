@@ -1,6 +1,6 @@
 import Footer from './footer'
 import Navbar from './navbar'
-import Submenu from './sections/submenu'
+import Submenu from './submenu'
 
 function SidebarLayout({ children }: { children: React.ReactNode }) {
   return (

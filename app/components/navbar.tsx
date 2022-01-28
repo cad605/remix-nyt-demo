@@ -27,12 +27,7 @@ function PrimaryNavLink({ to, children }: PrimaryNavLinkProps) {
 
 export default function Navbar() {
   return (
-    <nav className="flex justify-around py-3 bg-gray-100 text-slate-900 md:flex-col md:py-4 md:px-4 md:justify-start md:gap-6">
-      {/* <Form method="post" action="/auth/logout">
-        <button type="submit">
-        <UserIcon></UserIcon>
-        </button>
-      </Form> */}
+    <nav className="flex justify-around py-3 bg-gray-100 md:flex-col md:py-4 md:px-4 md:justify-start md:gap-6">
       <a
         href="https://developer.nytimes.com/"
         rel="noopener noreferrer"
