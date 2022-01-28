@@ -1,4 +1,4 @@
-import {Form} from 'remix'
+import { Form } from 'remix'
 
 export default function Navbar() {
   return (

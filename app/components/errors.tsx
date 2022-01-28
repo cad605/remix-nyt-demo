@@ -1,4 +1,4 @@
-import {useMatches} from 'remix'
+import { useMatches } from 'remix'
 
 type ErrorPageProps = {
   error?: Error
@@ -6,7 +6,7 @@ type ErrorPageProps = {
   subtitle: string
 }
 
-function ErrorPage({error, ...props}: ErrorPageProps) {
+function ErrorPage({ error, ...props }: ErrorPageProps) {
   return (
     <>
       <noscript>
@@ -17,8 +17,8 @@ function ErrorPage({error, ...props}: ErrorPageProps) {
             padding: 30,
           }}
         >
-          <h1 style={{fontSize: '2em'}}>{props.title}</h1>
-          <p style={{fontSize: '1.5em'}}>{props.subtitle}</p>
+          <h1 style={{ fontSize: '2em' }}>{props.title}</h1>
+          <p style={{ fontSize: '1.5em' }}>{props.subtitle}</p>
           <small>
             Also, this site works much better with JavaScript enabled...
           </small>
@@ -46,7 +46,7 @@ function MissingPage() {
   )
 }
 
-function ServerError({error}: {error?: Error}) {
+function ServerError({ error }: { error?: Error }) {
   const matches = useMatches()
   const last = matches[matches.length - 1]
   const pathname = last?.pathname
@@ -60,4 +60,4 @@ function ServerError({error}: {error?: Error}) {
   )
 }
 
-export {ServerError, ErrorPage, MissingPage}
+export { ServerError, ErrorPage, MissingPage }

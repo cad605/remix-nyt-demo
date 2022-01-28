@@ -1,7 +1,7 @@
 import * as React from 'react'
-import {useId} from '@reach/auto-id'
+import { useId } from '@reach/auto-id'
 
-function Label({className, ...labelProps}: JSX.IntrinsicElements['label']) {
+function Label({ className, ...labelProps }: JSX.IntrinsicElements['label']) {
   return (
     <label
       className="block text-xl text-zinc-800 font-medium"
@@ -11,7 +11,7 @@ function Label({className, ...labelProps}: JSX.IntrinsicElements['label']) {
 }
 
 type InputProps =
-  | ({type: 'textarea'} & JSX.IntrinsicElements['textarea'])
+  | ({ type: 'textarea' } & JSX.IntrinsicElements['textarea'])
   | JSX.IntrinsicElements['input']
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
@@ -41,7 +41,7 @@ interface InputErrorProps {
   children?: string | null
 }
 
-function InputError({children, id}: InputErrorProps) {
+function InputError({ children, id }: InputErrorProps) {
   if (!children) {
     return null
   }
@@ -64,7 +64,7 @@ const Field = React.forwardRef<
     description?: React.ReactNode
   } & InputProps
 >(function Field(
-  {defaultValue, error, name, label, className, description, id, ...props},
+  { defaultValue, error, name, label, className, description, id, ...props },
   ref,
 ) {
   const prefix = useId()
@@ -102,7 +102,13 @@ const Field = React.forwardRef<
   )
 })
 
-function ErrorPanel({children, id}: {children: React.ReactNode; id?: string}) {
+function ErrorPanel({
+  children,
+  id,
+}: {
+  children: React.ReactNode
+  id?: string
+}) {
   return (
     <div role="alert" className="relative mt-8 px-11 py-8" id={id}>
       <div className="absolute inset-0 rounded-lg bg-red-500 opacity-25" />
@@ -113,4 +119,4 @@ function ErrorPanel({children, id}: {children: React.ReactNode; id?: string}) {
   )
 }
 
-export {Label, Input, InputError, Field, ErrorPanel}
+export { Label, Input, InputError, Field, ErrorPanel }

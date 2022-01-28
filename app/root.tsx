@@ -6,18 +6,18 @@ import {
   Scripts,
   ScrollRestoration,
 } from 'remix'
-import type {MetaFunction} from 'remix'
+import type { MetaFunction } from 'remix'
 import tailwind from './tailwind.css'
 import Navbar from './components/navbar'
 import Footer from './components/footer'
 import Layout from './components/layout'
 
 export function links() {
-  return [{rel: 'stylesheet', href: tailwind}]
+  return [{ rel: 'stylesheet', href: tailwind }]
 }
 
 export const meta: MetaFunction = () => {
-  return {title: 'NYT | Remix Demo | Home'}
+  return { title: 'NYT | Remix Demo | Home' }
 }
 
 function Document({

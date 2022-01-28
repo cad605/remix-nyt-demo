@@ -1,0 +1,11 @@
+# Ignore artifacts:
+node_modules
+
+/.cache
+/build
+/public/build
+/app/tailwind.css
+
+/prisma/dev.db
+/prisma/seed.ts
+.env
