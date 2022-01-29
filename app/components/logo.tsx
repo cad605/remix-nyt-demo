@@ -2,7 +2,7 @@ import { LogoIcon } from './icons'
 
 export default function Logo() {
   return (
-    <div className="mt-4 mb-2  border-b-2 border-dotted border-zinc-600 pb-2">
+    <div className="mt-4 mb-2  border-b-2 border-dotted border-gray-600 pb-2">
       <a
         href="https://www.nytimes.com"
         rel="noopener noreferrer"

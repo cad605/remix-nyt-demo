@@ -8,8 +8,6 @@ import {
 } from 'remix'
 import type { MetaFunction } from 'remix'
 import tailwind from './tailwind.css'
-import Navbar from './components/navbar'
-import Footer from './components/footer'
 import { Layout } from './components/layout'
 
 export function links() {
@@ -36,7 +34,7 @@ function Document({
         <title>{title}</title>
         <Links />
       </head>
-      <body className="bg-gray-200 text-gray-800 fixed overflow-hidden h-full w-full">
+      <body className="bg-gray-200 text-black fixed overflow-hidden h-full w-full">
         <Layout>{children}</Layout>
         <ScrollRestoration />
         <Scripts />

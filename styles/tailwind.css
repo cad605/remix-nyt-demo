@@ -18,6 +18,6 @@
   [multiple],
   textarea,
   select {
-    @apply w-full capitalize rounded-md focus:outline-none focus:border-slate-700 focus:ring-1 focus:ring-slate-700;
+    @apply w-full capitalize rounded-md text-black text-sm focus:text-gray-700 focus:outline-none focus:border-gray-700 focus:ring-1 focus:ring-gray-700;
   }
 }

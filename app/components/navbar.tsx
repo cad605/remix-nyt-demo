@@ -18,8 +18,8 @@ function PrimaryNavLink({ to, children }: PrimaryNavLinkProps) {
       children={children}
       className={({ isActive }) =>
         `${
-          isActive ? 'font-black' : 'focus:text-slate-500'
-        } text-slate-700 hover:text-slate-500`
+          isActive ? 'text-white bg-black' : null
+        } p-2 rounded-xl text-center hover:-translate-y-1`
       }
     />
   )
@@ -27,24 +27,13 @@ function PrimaryNavLink({ to, children }: PrimaryNavLinkProps) {
 
 export default function Navbar() {
   return (
-    <nav className="flex justify-around py-3 bg-gray-100 md:flex-col md:py-4 md:px-4 md:justify-start md:gap-6">
-      <a
-        href="https://developer.nytimes.com/"
-        rel="noopener noreferrer"
-        target={'_blank'}
-        aria-label="Data provided by The New York Times"
-      >
-        <img
-          src="/logos/poweredby_nytimes_30a.png"
-          alt="Data provided by The New York Times"
-        ></img>
-      </a>
-      <div className="hidden md:block md:flex-1" />
-      <PrimaryNavLink to="/">
-        <OutlineHomeIcon></OutlineHomeIcon>
-      </PrimaryNavLink>
+    <nav className="flex justify-around py-3 bg-gray-100 md:flex-col md:py-4 md:px-4 md:justify-start md:gap-6 rounded-xl">
       <PrimaryNavLink to="/search">
         <SearchIcon></SearchIcon>
+      </PrimaryNavLink>
+      <div className="hidden md:block md:flex-1" />
+      <PrimaryNavLink to="/section/home">
+        <OutlineHomeIcon></OutlineHomeIcon>
       </PrimaryNavLink>
       <PrimaryNavLink to="/bookmarks">
         <OutlineFavoriteIcon></OutlineFavoriteIcon>

@@ -1,7 +1,7 @@
 import { LoaderFunction, useLoaderData } from 'remix'
 
 type LoaderData = string
-export const loader: LoaderFunction = async ({ params }) => {
+export const loader: LoaderFunction = ({ params }) => {
   return params.id
 }
 

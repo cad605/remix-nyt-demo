@@ -11,7 +11,7 @@ function SidebarLayout({ children }: { children: React.ReactNode }) {
 function SidebarNav({ children }: { children: React.ReactNode }) {
   return (
     <header
-      className="m-4 flex flex-col overflow-hidden md:flex-row rounded-xl"
+      className="m-4 flex flex-col overflow-hidden md:flex-row"
       children={children}
     />
   )
