@@ -20,7 +20,7 @@ function SidebarNav({ children }: { children: React.ReactNode }) {
 function VScrollContent({ children }: { children: React.ReactNode }) {
   return (
     <div
-      className="flex-1 flex flex-col ml-6 mr-6 overflow-y-scroll overflow-x-hidden md:overflow-hidden"
+      className="flex-1 flex flex-col ml-6 mr-6 overflow-y-scroll overflow-x-hidden"
       // style={{ scrollSnapType: 'y mandatory' }}
       children={children}
     />
