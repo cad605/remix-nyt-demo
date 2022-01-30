@@ -1,10 +1,12 @@
-import Footer from './footer'
 import Navbar from './navbar'
 import Submenu from './submenu'
 
 function SidebarLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="h-full flex flex-col md:flex-row" children={children} />
+    <div
+      className="h-full w-full flex flex-col md:flex-row"
+      children={children}
+    />
   )
 }
 
@@ -20,8 +22,7 @@ function SidebarNav({ children }: { children: React.ReactNode }) {
 function VScrollContent({ children }: { children: React.ReactNode }) {
   return (
     <div
-      className="flex-1 flex flex-col ml-6 mr-6 overflow-y-scroll overflow-x-hidden"
-      // style={{ scrollSnapType: 'y mandatory' }}
+      className="h-full mt-4 mr-4 ml-4 flex-1 flex flex-col overflow-y-scroll md:overflow-y-hidden overflow-x-hidden"
       children={children}
     />
   )
@@ -36,14 +37,7 @@ export function VScrollChild({
 }) {
   return (
     <div
-      className={
-        'mt-4 grow flex flex-col overflow-y-scroll overflow-x-hidden' +
-        ' ' +
-        className
-      }
-      // style={{
-      //   scrollSnapAlign: 'start',
-      // }}
+      className={`m-4 h-full flex flex-col flex-shrink-0 order-1 ${className}`}
       children={children}
     />
   )

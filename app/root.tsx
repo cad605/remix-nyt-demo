@@ -34,7 +34,7 @@ function Document({
         <title>{title}</title>
         <Links />
       </head>
-      <body className="bg-gray-200 text-black fixed overflow-hidden h-full w-full">
+      <body className="bg-gray-200 text-black fixed overflow-hidden h-screen w-screen">
         <Layout>{children}</Layout>
         <ScrollRestoration />
         <Scripts />

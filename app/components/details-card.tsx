@@ -3,7 +3,13 @@ import formatDate from 'date-fns/format'
 import parseISO from 'date-fns/parseISO'
 import { OutlineFavoriteIcon } from './icons'
 
-export default function Details({ article }: { article: TopStory }) {
+export default function Details({
+  article,
+  className = '',
+}: {
+  article: TopStory
+  className?: string
+}) {
   const {
     title,
     abstract,
@@ -15,11 +21,11 @@ export default function Details({ article }: { article: TopStory }) {
     subsection,
   } = article
   return (
-    <div className="flex flex-row space-x-4 pt-2">
+    <div className={`flex flex-row space-x-4 pt-2 ${className}`}>
       {multimedia ? (
-        <div className="hidden flex-none w-1/4 md:block">
+        <div className="flex-none hidden md:block w-1/4">
           <img
-            className="rounded-md w-full h-full"
+            className="rounded-md object-cover h-full w-full"
             src={multimedia[0].url}
             alt={multimedia[0].caption}
           ></img>

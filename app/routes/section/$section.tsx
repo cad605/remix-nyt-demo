@@ -22,13 +22,11 @@ export const loader: LoaderFunction = async ({ params }) => {
       'There has been a problem with your fetch operation: ' + e.message,
     )
   })
-  const topStories = await getTopStoriesBySection(params.section, 5).catch(
-    e => {
-      console.log(
-        'There has been a problem with your fetch operation: ' + e.message,
-      )
-    },
-  )
+  const topStories = await getTopStoriesBySection(params.section).catch(e => {
+    console.log(
+      'There has been a problem with your fetch operation: ' + e.message,
+    )
+  })
   return {
     feature,
     topStories,
@@ -39,23 +37,21 @@ export const loader: LoaderFunction = async ({ params }) => {
 export default function SectionId() {
   const { feature, section, topStories } = useLoaderData<LoaderData>()
   return (
-    <div className="divide-y-2 divide-dotted divide-gray-500">
-      <h1 className="mb-4 text-xl font-bold capitalize">{section}</h1>
-      <main className="flex flex-col md:flex-row divide-y-2 md:divide-y-0 md:divide-x-2 divide-dotted divide-gray-500">
-        <div className="p-4 flex-1">
+    <main className="h-full">
+      <h1 className="text-xl font-bold capitalize">{section}</h1>
+      <div className="h-full flex flex-col md:flex-row divide-y-2 md:divide-y-0 md:divide-x-2 space-y-2 divide-dotted divide-gray-500">
+        <div className="h-5/6 flex-1 p-4 md:overflow-y-scroll">
           {feature ? (
             <FeatureCard article={feature} key={feature.uri}></FeatureCard>
           ) : null}
         </div>
-        <div className="p-4 flex-1 space-y-4 divide-y-2 divide-dotted divide-gray-500">
-          <div className="flex flex-row justify-between">
-            <ArrowButton
-              direction="right"
-              className="text-xl font-bold capitalize"
-            >
-              Latest News
-            </ArrowButton>
-          </div>
+        <div className="h-5/6 flex-1 p-4 md:overflow-y-scroll space-y-4 divide-y-2 divide-dotted divide-gray-500">
+          <ArrowButton
+            direction="right"
+            className="text-xl font-bold capitalize"
+          >
+            Latest News
+          </ArrowButton>
           {topStories
             ? topStories.map(article => {
                 return (
@@ -67,7 +63,7 @@ export default function SectionId() {
               })
             : null}
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   )
 }
