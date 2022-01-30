@@ -8,7 +8,7 @@ export async function loader() {
     'politics',
     'business',
     'opinion',
-    'tech',
+    'technology',
     'science',
     'sports',
     'arts',

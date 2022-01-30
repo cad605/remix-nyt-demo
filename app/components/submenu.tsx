@@ -8,7 +8,7 @@ const menuLinks = [
   'politics',
   'business',
   'opinion',
-  'tech',
+  'technology',
   'science',
   'sports',
   'arts',

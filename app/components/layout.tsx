@@ -36,7 +36,11 @@ export function VScrollChild({
 }) {
   return (
     <div
-      className={'mt-4 grow flex flex-col' + ' ' + className}
+      className={
+        'mt-4 grow flex flex-col overflow-y-scroll overflow-x-hidden' +
+        ' ' +
+        className
+      }
       // style={{
       //   scrollSnapAlign: 'start',
       // }}
