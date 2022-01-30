@@ -58,7 +58,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <VScrollContent>
         <Submenu></Submenu>
         <VScrollChild>{children}</VScrollChild>
-        <Footer></Footer>
       </VScrollContent>
     </SidebarLayout>
   )

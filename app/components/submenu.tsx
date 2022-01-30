@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useRef } from 'react'
 import { NavLink, useMatches, useNavigate } from 'remix'
-import Logo from './logo'
+import Heading from './heading'
 
 const menuLinks = [
   'home',
@@ -32,7 +32,7 @@ export default function Submenu() {
 
   return (
     <div className="pt-2 pb-2 border-b-2 border-dotted border-gray-600">
-      <Logo></Logo>
+      <Heading></Heading>
       <div className="hidden md:flex md:flex-row md:space-y-0 flex-col items-center space-y-1 justify-evenly">
         {menuLinks
           ? menuLinks.slice(0, 9).map(link => (

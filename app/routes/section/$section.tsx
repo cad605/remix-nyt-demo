@@ -22,11 +22,13 @@ export const loader: LoaderFunction = async ({ params }) => {
       'There has been a problem with your fetch operation: ' + e.message,
     )
   })
-  const topStories = await getTopStoriesBySection(params.section).catch(e => {
-    console.log(
-      'There has been a problem with your fetch operation: ' + e.message,
-    )
-  })
+  const topStories = await getTopStoriesBySection(params.section, 5).catch(
+    e => {
+      console.log(
+        'There has been a problem with your fetch operation: ' + e.message,
+      )
+    },
+  )
   return {
     feature,
     topStories,
@@ -55,7 +57,7 @@ export default function SectionId() {
             </ArrowButton>
           </div>
           {topStories
-            ? topStories.slice(1, 5).map(article => {
+            ? topStories.map(article => {
                 return (
                   <DetailsCard
                     key={article.uri}

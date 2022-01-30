@@ -20,4 +20,8 @@
   select {
     @apply w-full capitalize rounded-md text-black text-sm focus:text-gray-700 focus:outline-none focus:border-gray-700 focus:ring-1 focus:ring-gray-700;
   }
+
+  img {
+    height: none;
+  }
 }

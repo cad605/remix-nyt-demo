@@ -18,7 +18,10 @@ export async function getTopFeatureBySection(section: string): Promise<any> {
   return stories.results[0] ?? null
 }
 
-export async function getTopStoriesBySection(section: string): Promise<any> {
+export async function getTopStoriesBySection(
+  section: string,
+  take?: number,
+): Promise<any> {
   const res = await fetch(
     `${baseURL}/topstories/v2/${section}.json?api-key=${TIMES_KEY}`,
   )
@@ -26,5 +29,5 @@ export async function getTopStoriesBySection(section: string): Promise<any> {
     throw new Error(`HTTP error! status: ${res.status}`)
   }
   const stories = await res.json()
-  return stories.results ?? null
+  return take ? stories.results.slice(1, take) : stories.results
 }

@@ -1,5 +1,5 @@
 import { TopStory } from '~/models/top-story'
-import { OutlineHeartIcon } from './icons'
+import { OutlineFavoriteIcon } from './icons'
 import formatDate from 'date-fns/format'
 import parseISO from 'date-fns/parseISO'
 
@@ -17,7 +17,7 @@ function FeatureCard({ article }: { article: TopStory }) {
   return (
     <div className="flex flex-col space-y-2">
       {multimedia ? (
-        <div className="w-2/3">
+        <div className="w-full md:w-3/4">
           <img
             className="rounded-md"
             src={multimedia[0].url}
@@ -65,7 +65,7 @@ function FeatureCard({ article }: { article: TopStory }) {
           </button>
         </a>
         <button>
-          <OutlineHeartIcon></OutlineHeartIcon>
+          <OutlineFavoriteIcon></OutlineFavoriteIcon>
         </button>
       </div>
     </div>
