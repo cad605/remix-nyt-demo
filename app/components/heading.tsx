@@ -4,8 +4,8 @@ import parseISO from 'date-fns/parseISO'
 
 export default function Heading() {
   return (
-    <div className="grid grid-cols-3 items-center mt-4 mb-2 border-b-2 border-dotted border-gray-600 pb-2">
-      <div className="flex justify-start">
+    <div className="grid grid-cols-1 md:grid-cols-3 items-center mt-4 mb-2 border-b-2 border-dotted border-gray-600 pb-2">
+      <div className="hidden md:flex justify-start">
         <p className="text-sm font-semibold">
           {formatDate(new Date(), 'PPPP')}
         </p>
@@ -19,7 +19,7 @@ export default function Heading() {
       >
         <LogoIcon></LogoIcon>
       </a>
-      <div className="flex justify-end">
+      <div className="hidden md:flex justify-end">
         <a
           href="https://developer.nytimes.com/"
           rel="noopener noreferrer"
