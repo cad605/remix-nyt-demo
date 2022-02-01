@@ -3,7 +3,7 @@ import formatDate from 'date-fns/format'
 import parseISO from 'date-fns/parseISO'
 import { Article } from '~/models/article'
 
-function DetailsCard({ data }: { data: Article }) {
+function PopularCard({ data }: { data: Article }) {
   const { title, url, kicker, published_date, subsection } = data
   return (
     <div className="pt-4 flex flex-col space-y-4">
@@ -13,6 +13,28 @@ function DetailsCard({ data }: { data: Article }) {
         publishedDate={published_date}
       ></MetadataRow>
       <h1 className="text-black text-md lg:text-lg font-bold">{title}</h1>
+      <ActionRow url={url}></ActionRow>
+    </div>
+  )
+}
+
+function LatestCard({ data }: { data: Article }) {
+  const { title, abstract, multimedia, url } = data
+  return (
+    <div className="pt-4 flex flex-col space-y-4">
+      <div className="flex flex-row space-x-4 items-center">
+        {multimedia ? (
+          <img
+            className="aspect-h-4 aspect-w-3"
+            src={multimedia[0].url}
+            alt={multimedia[0].caption}
+          ></img>
+        ) : null}
+        <h1 className="text-black text-base lg:text-md font-bold">{title}</h1>
+      </div>
+      <p className="text-gray-700 text:sm lg:text-base font-normal">
+        {abstract}
+      </p>
       <ActionRow url={url}></ActionRow>
     </div>
   )
@@ -97,9 +119,9 @@ function ArticleInfo({
   )
 }
 
-function ActionRow({ url }: { url: string }) {
+function ActionRow({ url, className }: { url: string; className?: string }) {
   return (
-    <div className="flex flex-row justify-between text-gray-500">
+    <div className={`flex flex-row justify-between text-gray-500 ${className}`}>
       <a
         href={url}
         rel="noopener noreferrer"
@@ -117,4 +139,4 @@ function ActionRow({ url }: { url: string }) {
   )
 }
 
-export { FeatureCard, DetailsCard }
+export { FeatureCard, PopularCard, LatestCard }

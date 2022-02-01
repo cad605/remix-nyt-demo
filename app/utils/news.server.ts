@@ -29,7 +29,7 @@ export async function getNewsWireBySection(
 ): Promise<Response> {
   const res = await fetch(
     `${baseURL}/news/v3/content/all/${
-      section === 'home' ? 'all' : section
+      section === 'home' ? 'home page' : section
     }.json?limit=${limit}&api-key=${TIMES_KEY}`,
   )
 

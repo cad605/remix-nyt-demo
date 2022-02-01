@@ -6,7 +6,7 @@ import {
   getTopArticlesBySection,
   SectionArticles,
 } from '~/utils/news.server'
-import { FeatureCard } from '~/components/cards'
+import { FeatureCard, LatestCard, PopularCard } from '~/components/cards'
 import { ArticleList } from '~/components/article-list'
 
 type LoaderData = {
@@ -60,11 +60,19 @@ export default function Section() {
       {data && data.feature ? (
         <FeatureCard data={data.feature}></FeatureCard>
       ) : null}
-      {data && data.latest ? (
-        <ArticleList title={'Latest'} data={data?.latest}></ArticleList>
-      ) : null}
       {data && data.top ? (
-        <ArticleList title={'Most Popular'} data={data?.top}></ArticleList>
+        <ArticleList title={'Top Stories'}>
+          {data?.top.map(article => {
+            return <PopularCard key={article.uri} data={article}></PopularCard>
+          })}
+        </ArticleList>
+      ) : null}
+      {data && data.latest ? (
+        <ArticleList title={'Latest'}>
+          {data?.latest.map(article => {
+            return <LatestCard key={article.uri} data={article}></LatestCard>
+          })}
+        </ArticleList>
       ) : null}
     </SectionLayout>
   )

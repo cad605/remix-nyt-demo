@@ -1,12 +1,10 @@
-import { Article } from '~/models/article'
 import ArrowButton from './arrow-button'
-import { DetailsCard } from './cards'
 
 export function ArticleList({
-  data,
+  children,
   title,
 }: {
-  data: Array<Article> | undefined
+  children: React.ReactNode
   title: string
 }) {
   return (
@@ -15,13 +13,7 @@ export function ArticleList({
         {title}
       </ArrowButton>
       <div className="space-y-4 divide-y-2 divide-dotted divide-gray-500">
-        {data
-          ? data.map(article => {
-              return (
-                <DetailsCard key={article.uri} data={article}></DetailsCard>
-              )
-            })
-          : null}
+        {children}
       </div>
     </aside>
   )
