@@ -1,4 +1,4 @@
-export interface TopStory {
+export interface Article {
   section: string
   subsection: string
   title: string

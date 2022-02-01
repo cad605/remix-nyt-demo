@@ -46,7 +46,7 @@ export default function SectionList() {
   return (
     <div>
       <h1 className="mb-4 text-xl font-bold capitalize">Sections</h1>
-      <ul className="container mx-auto grid grid-cols-2 sm:grid-cols-3 gap-4">
+      <ul className="container mx-auto grid grid-cols-2 lg:grid-cols-3 gap-4">
         {menuLinks.map(link => (
           <li className="col-span-1">
             <NavLink

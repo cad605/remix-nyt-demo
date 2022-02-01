@@ -27,11 +27,11 @@ function PrimaryNavLink({ to, children }: PrimaryNavLinkProps) {
 
 export default function Navbar() {
   return (
-    <nav className="flex flex-row justify-around py-3 bg-gray-100 md:flex-col md:py-4 md:px-4 md:justify-start md:gap-6 rounded-xl">
+    <nav className="flex flex-row justify-around py-3 bg-gray-100 lg:flex-col lg:py-4 lg:px-4 lg:justify-start lg:gap-6">
       <PrimaryNavLink to="/search">
         <SearchIcon></SearchIcon>
       </PrimaryNavLink>
-      <div className="hidden md:block md:flex-1" />
+      <div className="hidden lg:block lg:flex-1" />
       <PrimaryNavLink to="/section/home">
         <OutlineHomeIcon></OutlineHomeIcon>
       </PrimaryNavLink>

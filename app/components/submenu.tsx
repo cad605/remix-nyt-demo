@@ -31,9 +31,9 @@ export default function Submenu() {
   }, [matches])
 
   return (
-    <div className="pt-2 pb-2 border-b-2 border-dotted border-gray-600">
+    <div className="border-b-2 border-dotted border-gray-600">
       <Heading></Heading>
-      <div className="hidden md:flex md:flex-row md:space-y-0 flex-col items-center space-y-1 justify-evenly">
+      <div className="hidden m-2 lg:flex lg:flex-row lg:space-y-0 flex-col items-center space-y-1 justify-evenly">
         {menuLinks
           ? menuLinks.slice(0, 9).map(link => (
               <NavLink
@@ -60,7 +60,7 @@ export default function Submenu() {
           ...
         </NavLink>
       </div>
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <select
           id="section-select"
           ref={ref}
