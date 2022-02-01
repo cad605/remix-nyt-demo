@@ -18,7 +18,7 @@ function Logo() {
 
 export default function Heading() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 items-center border-b-2 border-dotted border-gray-600 pb-2">
+    <div className="grid grid-cols-1 lg:grid-cols-3 items-center border-b-2 border-dotted border-gray-600 pb-4">
       <div className="hidden lg:flex justify-start">
         <p className="text-sm font-semibold">
           {formatDate(new Date(), 'PPPP')}
@@ -33,7 +33,8 @@ export default function Heading() {
           aria-label="Data provided by The New York Times"
         >
           <img
-            src="/logos/poweredby_nytimes_200c.png"
+            className="aspect-square"
+            src="/logos/poweredby_nytimes_65a.png"
             alt="Data provided by The New York Times"
           ></img>
         </a>

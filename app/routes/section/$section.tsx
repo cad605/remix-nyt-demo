@@ -2,32 +2,31 @@ import invariant from 'tiny-invariant'
 import { useLoaderData } from 'remix'
 import type { LoaderFunction } from 'remix'
 import {
-  getNewsWireBySection,
-  getTopArticlesBySection,
+  getLatestBySection,
+  getTopStoriesBySection,
   SectionArticles,
 } from '~/utils/news.server'
-import { FeatureCard, LatestCard, PopularCard } from '~/components/cards'
+import { FeatureCard, LatestCard, TopStoriesCard } from '~/components/cards'
 import { ArticleList } from '~/components/article-list'
 
 type LoaderData = {
   section: string
-  data: SectionArticles | null
+  data: SectionArticles
 }
 export const loader: LoaderFunction = async ({ params }): Promise<any> => {
   invariant(params.section, 'Expected params.section')
-
-  const res = await Promise.all([
-    getTopArticlesBySection(params.section),
-    getNewsWireBySection(params.section),
+  const responses = await Promise.all([
+    getTopStoriesBySection(params.section),
+    getLatestBySection(params.section),
   ])
 
-  const topStories = res[0].ok ? await res[0].json() : null
-  const newsWire = res[1].ok ? await res[1].json() : null
+  const topStories = responses[0]
+  const latest = responses[1]
 
   const data: SectionArticles = {
-    feature: topStories ? topStories.results[0] : null,
-    top: topStories ? topStories.results.slice(1, 5) : null,
-    latest: newsWire ? newsWire.results : null,
+    feature: topStories.results[0],
+    topStories: topStories.results.slice(1),
+    latest: latest?.results,
   }
 
   return {
@@ -57,17 +56,17 @@ export default function Section() {
   const { section, data } = useLoaderData<LoaderData>()
   return (
     <SectionLayout section={section}>
-      {data && data.feature ? (
-        <FeatureCard data={data.feature}></FeatureCard>
-      ) : null}
-      {data && data.top ? (
+      {data.feature ? <FeatureCard data={data.feature}></FeatureCard> : null}
+      {data.topStories ? (
         <ArticleList title={'Top Stories'}>
-          {data?.top.map(article => {
-            return <PopularCard key={article.uri} data={article}></PopularCard>
+          {data?.topStories.map(article => {
+            return (
+              <TopStoriesCard key={article.uri} data={article}></TopStoriesCard>
+            )
           })}
         </ArticleList>
       ) : null}
-      {data && data.latest ? (
+      {data.latest ? (
         <ArticleList title={'Latest'}>
           {data?.latest.map(article => {
             return <LatestCard key={article.uri} data={article}></LatestCard>

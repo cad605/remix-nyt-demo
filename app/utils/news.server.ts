@@ -1,4 +1,4 @@
-import { Article } from '~/models/article'
+import { Article, NYTResponse } from '~/models/article'
 
 const baseURL = 'https://api.nytimes.com/svc'
 
@@ -9,29 +9,55 @@ if (!TIMES_KEY) {
 
 export interface SectionArticles {
   feature?: Article
-  top?: Array<Article>
+  topStories?: Array<Article>
   latest?: Array<Article>
 }
 
-export async function getTopArticlesBySection(
+export async function getTopStoriesBySection(
   section: string,
-): Promise<Response> {
+): Promise<NYTResponse> {
   const res = await fetch(
     `${baseURL}/topstories/v2/${section}.json?api-key=${TIMES_KEY}`,
   )
 
-  return res
+  if (res.ok) {
+    const results = await res.json()
+    return results
+  } else {
+    throw new Response(res.statusText, { status: res.status })
+  }
 }
 
-export async function getNewsWireBySection(
+export async function getLatestBySection(
   section: string,
   limit: number = 3,
-): Promise<Response> {
+): Promise<NYTResponse | null> {
   const res = await fetch(
     `${baseURL}/news/v3/content/all/${
-      section === 'home' ? 'home page' : section
+      section === 'home' ? 'all' : section
     }.json?limit=${limit}&api-key=${TIMES_KEY}`,
   )
 
-  return res
+  if (res.ok) {
+    const results = await res.json()
+    return results
+  } else {
+    // some sections don't have this feature; if bad request, return null, otherwise throw response
+    switch (res.status) {
+      case 400:
+        return null
+    }
+
+    throw new Response(res.statusText, { status: res.status })
+  }
+}
+
+export async function getLatestSectionList(): Promise<any> {
+  const res = await fetch(`${baseURL}/news/v3/content/section-list.json`)
+  if (res.ok) {
+    const results = await res.json()
+    return results
+  } else {
+    throw new Response(res.statusText, { status: res.status })
+  }
 }

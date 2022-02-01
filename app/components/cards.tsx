@@ -3,7 +3,7 @@ import formatDate from 'date-fns/format'
 import parseISO from 'date-fns/parseISO'
 import { Article } from '~/models/article'
 
-function PopularCard({ data }: { data: Article }) {
+function TopStoriesCard({ data }: { data: Article }) {
   const { title, url, kicker, published_date, subsection } = data
   return (
     <div className="pt-4 flex flex-col space-y-4">
@@ -23,14 +23,14 @@ function LatestCard({ data }: { data: Article }) {
   return (
     <div className="pt-4 flex flex-col space-y-4">
       <div className="flex flex-row space-x-4 items-center">
+        <h1 className="text-black text-base lg:text-md font-bold">{title}</h1>
         {multimedia ? (
           <img
-            className="aspect-h-4 aspect-w-3"
+            className="aspect-h-4 aspect-w-3 rounded-sm"
             src={multimedia[0].url}
             alt={multimedia[0].caption}
           ></img>
         ) : null}
-        <h1 className="text-black text-base lg:text-md font-bold">{title}</h1>
       </div>
       <p className="text-gray-700 text:sm lg:text-base font-normal">
         {abstract}
@@ -139,4 +139,4 @@ function ActionRow({ url, className }: { url: string; className?: string }) {
   )
 }
 
-export { FeatureCard, PopularCard, LatestCard }
+export { FeatureCard, TopStoriesCard, LatestCard }

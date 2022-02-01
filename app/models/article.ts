@@ -1,3 +1,12 @@
+export interface NYTResponse {
+  status?: string
+  copyright?: string
+  section?: string
+  last_updated?: string
+  num_results?: number
+  results: Array<any>
+}
+
 export interface Article {
   section: string
   subsection: string
