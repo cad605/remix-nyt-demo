@@ -7,7 +7,7 @@ import {
   SectionArticles,
 } from '~/utils/news.server'
 import { FeatureCard } from '~/components/cards'
-import { LatestList } from '~/components/latest-list'
+import { ArticleList } from '~/components/article-list'
 
 type LoaderData = {
   section: string
@@ -16,18 +16,18 @@ type LoaderData = {
 export const loader: LoaderFunction = async ({ params }): Promise<any> => {
   invariant(params.section, 'Expected params.section')
 
-  const responses = await Promise.all([
+  const res = await Promise.all([
     getTopArticlesBySection(params.section),
     getNewsWireBySection(params.section),
   ])
 
-  const topStories = await responses[0].json()
-  const newsWire = await responses[1].json()
+  const topStories = res[0].ok ? await res[0].json() : null
+  const newsWire = res[1].ok ? await res[1].json() : null
 
   const data: SectionArticles = {
-    feature: topStories.results[0],
-    top: topStories.results.slice(1, 5),
-    latest: newsWire.results,
+    feature: topStories ? topStories.results[0] : null,
+    top: topStories ? topStories.results.slice(1, 5) : null,
+    latest: newsWire ? newsWire.results : null,
   }
 
   return {
@@ -61,7 +61,10 @@ export default function Section() {
         <FeatureCard data={data.feature}></FeatureCard>
       ) : null}
       {data && data.latest ? (
-        <LatestList data={data?.latest}></LatestList>
+        <ArticleList title={'Latest'} data={data?.latest}></ArticleList>
+      ) : null}
+      {data && data.top ? (
+        <ArticleList title={'Most Popular'} data={data?.top}></ArticleList>
       ) : null}
     </SectionLayout>
   )

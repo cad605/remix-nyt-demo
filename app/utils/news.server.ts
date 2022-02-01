@@ -23,11 +23,14 @@ export async function getTopArticlesBySection(
   return res
 }
 
-export async function getNewsWireBySection(section: string): Promise<Response> {
+export async function getNewsWireBySection(
+  section: string,
+  limit: number = 3,
+): Promise<Response> {
   const res = await fetch(
     `${baseURL}/news/v3/content/all/${
       section === 'home' ? 'all' : section
-    }.json?limit=3&api-key=${TIMES_KEY}`,
+    }.json?limit=${limit}&api-key=${TIMES_KEY}`,
   )
 
   return res
