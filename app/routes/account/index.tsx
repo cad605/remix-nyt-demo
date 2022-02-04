@@ -1,15 +1,16 @@
 import { Link } from 'remix'
 
-export default function AccountIndex() {
+export default function AccountIndex({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <section>
-      <div className="flex flex-col md:flex-row">
-        <h1 className="mb-4 text-xl font-bold capitalize">Account</h1>
+    <main className="space-y-4">
+      <h1 className="text-xl font-bold capitalize">Account</h1>
+      <div className="flex flex-col space-y-4 lg:space-y-0 lg:space-x-4 lg:grid lg:grid-cols-3 lg:gap-4 lg:divide-x-2 lg:divide-dotted lg:divide-gray-500">
+        {children}
       </div>
-      <main className="flex flex-col">
-        <article></article>
-        <article></article>
-      </main>
-    </section>
+    </main>
   )
 }

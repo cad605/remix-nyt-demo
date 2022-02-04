@@ -5,6 +5,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useTransition,
 } from 'remix'
 import type { MetaFunction } from 'remix'
 import tailwind from './tailwind.css'
@@ -25,6 +26,7 @@ function Document({
   children: React.ReactNode
   title?: string
 }) {
+  const transition = useTransition()
   return (
     <html lang="en">
       <head>
@@ -34,7 +36,11 @@ function Document({
         <title>{title}</title>
         <Links />
       </head>
-      <body className="bg-gray-200 text-black fixed h-screen w-screen">
+      <body
+        className={`bg-gray-200 text-black fixed h-screen w-screen ${
+          transition.state === 'loading' ? 'opacity-10' : 'opacity-100'
+        }`}
+      >
         <Layout>{children}</Layout>
         <ScrollRestoration />
         <Scripts />

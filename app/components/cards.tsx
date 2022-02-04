@@ -23,10 +23,12 @@ function LatestCard({ data }: { data: Article }) {
   return (
     <div className="pt-4 flex flex-col space-y-4">
       <div className="flex flex-row space-x-4 items-center">
-        <h1 className="text-black text-base lg:text-md font-bold">{title}</h1>
+        <h1 className="text-black text-base lg:text-md font-bold grow">
+          {title}
+        </h1>
         {multimedia ? (
           <img
-            className="aspect-h-4 aspect-w-3"
+            className="aspect-square"
             src={multimedia[0].url}
             alt={multimedia[0].caption}
           ></img>
@@ -60,7 +62,10 @@ function FeatureCard({ data }: { data: Article }) {
             src={multimedia[0].url}
             alt={multimedia[0].caption}
           ></img>
-          <p className='className="mt-2 flex justify-end text-gray-700 text-xs font-thin"'>
+          <p className='className="mt-2 flex justify-start text-gray-700 text-sm font-thin"'>
+            {multimedia[0].caption}
+          </p>
+          <p className='className="mt-2 flex justify-start text-gray-700 text-xs font-thin"'>
             {multimedia[0].copyright}
           </p>
         </div>

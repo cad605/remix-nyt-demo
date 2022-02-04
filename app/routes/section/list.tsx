@@ -1,7 +1,7 @@
 import { NavLink, useLoaderData } from 'remix'
 import type { LoaderFunction } from 'remix'
 
-export async function loader() {
+export const loader: LoaderFunction = () => {
   const links = [
     'home',
     'world',

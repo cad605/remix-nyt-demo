@@ -31,7 +31,7 @@ export default function Submenu() {
   }, [matches])
 
   return (
-    <div className="border-b-2 border-dotted border-gray-600">
+    <div className="border-b-2 border-dotted border-gray-600 m-4">
       <Heading></Heading>
       <div className="hidden m-2 lg:flex lg:flex-row lg:space-y-0 flex-col items-center space-y-1 justify-evenly">
         {menuLinks
@@ -60,7 +60,7 @@ export default function Submenu() {
           ...
         </NavLink>
       </div>
-      <div className="lg:hidden">
+      <div className="lg:hidden m-2">
         <select
           id="section-select"
           ref={ref}
@@ -68,7 +68,7 @@ export default function Submenu() {
           placeholder={'Select a section to read'}
         >
           {menuLinks
-            ? menuLinks.slice(0, 9).map(link => (
+            ? menuLinks.map(link => (
                 <option key={link} value={link}>
                   {link.toUpperCase()}
                 </option>

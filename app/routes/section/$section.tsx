@@ -25,9 +25,15 @@ export const loader: LoaderFunction = async ({ params }): Promise<any> => {
     'Expected topStories to be an array',
   )
   const data: SectionArticles = {
-    feature: Array.isArray(topStories.results) ? topStories.results[0] : null,
-    topStories: topStories.results.slice(1, 5),
-    latest: latestStories?.results,
+    feature: topStories.results.filter(
+      result => result.item_type === 'Article',
+    )[0],
+    topStories: topStories.results
+      .filter(result => result.item_type === 'Article')
+      .slice(1, 5),
+    latest: latestStories?.results.filter(
+      result => result.item_type === 'Article',
+    ),
   }
 
   const responseInit: ResponseInit = {

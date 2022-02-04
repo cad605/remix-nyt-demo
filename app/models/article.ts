@@ -4,7 +4,7 @@ export interface NYTResponse {
   section?: string
   last_updated?: string
   num_results?: number
-  results: Array<any>
+  results: Array<Article>
 }
 
 export interface Article {
