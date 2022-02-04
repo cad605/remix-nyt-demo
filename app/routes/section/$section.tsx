@@ -20,20 +20,22 @@ export const loader: LoaderFunction = async ({ params }): Promise<any> => {
     getLatestBySection(params.section),
   ])
 
-  invariant(Array.isArray(topStories), 'Expected topStories to be an array')
   invariant(
-    Array.isArray(latestStories),
-    'Expected latestStories to be an array',
+    Array.isArray(topStories.results),
+    'Expected topStories to be an array',
   )
   const data: SectionArticles = {
-    feature: Array.isArray(topStories) ? topStories.results[0] : null,
+    feature: Array.isArray(topStories.results) ? topStories.results[0] : null,
     topStories: topStories.results.slice(1, 5),
-    latest: latestStories.results,
+    latest: latestStories?.results,
   }
 
   const responseInit: ResponseInit = {
-    headers: {},
+    headers: {
+      'Cache-Control': 'max-age=60',
+    },
   }
+
   return json(
     {
       section: params.section,
