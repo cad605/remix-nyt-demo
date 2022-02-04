@@ -26,7 +26,7 @@ function LatestCard({ data }: { data: Article }) {
         <h1 className="text-black text-base lg:text-md font-bold">{title}</h1>
         {multimedia ? (
           <img
-            className="aspect-h-4 aspect-w-3 rounded-sm"
+            className="aspect-h-4 aspect-w-3"
             src={multimedia[0].url}
             alt={multimedia[0].caption}
           ></img>

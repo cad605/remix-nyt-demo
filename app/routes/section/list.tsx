@@ -14,29 +14,21 @@ export async function loader() {
     'arts',
     'books',
     'automobiles',
-    'business',
     'fashion',
     'food',
     'health',
-    'home',
     'insider',
     'magazine',
     'movies',
     'nyregion',
     'obituaries',
-    'opinion',
-    'politics',
     'realestate',
-    'science',
-    'sports',
     'sundayreview',
-    'technology',
     'theater',
     't-magazine',
     'travel',
     'upshot',
     'us',
-    'world',
   ]
   return links
 }
@@ -48,9 +40,8 @@ export default function SectionList() {
       <h1 className="mb-4 text-xl font-bold capitalize">Sections</h1>
       <ul className="container mx-auto grid grid-cols-2 lg:grid-cols-3 gap-4">
         {menuLinks.map(link => (
-          <li className="col-span-1">
+          <li className="col-span-1" key={link}>
             <NavLink
-              key={link}
               to={`/section/${link}`}
               className={({ isActive }) =>
                 `${

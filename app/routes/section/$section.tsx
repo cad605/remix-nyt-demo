@@ -1,5 +1,5 @@
 import invariant from 'tiny-invariant'
-import { useLoaderData } from 'remix'
+import { json, useLoaderData } from 'remix'
 import type { LoaderFunction } from 'remix'
 import {
   getLatestBySection,
@@ -15,24 +15,32 @@ type LoaderData = {
 }
 export const loader: LoaderFunction = async ({ params }): Promise<any> => {
   invariant(params.section, 'Expected params.section')
-  const responses = await Promise.all([
+  const [topStories, latestStories] = await Promise.all([
     getTopStoriesBySection(params.section),
     getLatestBySection(params.section),
   ])
 
-  const topStories = responses[0]
-  const latest = responses[1]
-
+  invariant(Array.isArray(topStories), 'Expected topStories to be an array')
+  invariant(
+    Array.isArray(latestStories),
+    'Expected latestStories to be an array',
+  )
   const data: SectionArticles = {
-    feature: topStories.results[0],
-    topStories: topStories.results.slice(1),
-    latest: latest?.results,
+    feature: Array.isArray(topStories) ? topStories.results[0] : null,
+    topStories: topStories.results.slice(1, 5),
+    latest: latestStories.results,
   }
 
-  return {
-    section: params.section,
-    data,
+  const responseInit: ResponseInit = {
+    headers: {},
   }
+  return json(
+    {
+      section: params.section,
+      data,
+    },
+    responseInit,
+  )
 }
 
 function SectionLayout({
