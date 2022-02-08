@@ -1,6 +1,9 @@
 import { Article, NYTResponse } from '~/models/article'
 
-const baseURL = 'https://api.nytimes.com/svc'
+const TIMES_API = process.env.TIMES_API
+if (!TIMES_API) {
+  throw new Error('Remeber to set your NYT API base url...')
+}
 
 const TIMES_KEY = process.env.TIMES_KEY
 if (!TIMES_KEY) {
@@ -17,7 +20,7 @@ export async function getTopStoriesBySection(
   section: string,
 ): Promise<NYTResponse> {
   const res = await fetch(
-    `${baseURL}/topstories/v2/${section}.json?api-key=${TIMES_KEY}`,
+    `${TIMES_API}/topstories/v2/${section}.json?api-key=${TIMES_KEY}`,
   )
 
   if (res.ok) {
@@ -33,7 +36,7 @@ export async function getLatestBySection(
   limit: number = 3,
 ): Promise<NYTResponse | null> {
   const res = await fetch(
-    `${baseURL}/news/v3/content/all/${
+    `${TIMES_API}/news/v3/content/all/${
       section === 'home' ? 'all' : section
     }.json?limit=${limit}&api-key=${TIMES_KEY}`,
   )
@@ -53,7 +56,7 @@ export async function getLatestBySection(
 }
 
 export async function getLatestSectionList(): Promise<any> {
-  const res = await fetch(`${baseURL}/news/v3/content/section-list.json`)
+  const res = await fetch(`${TIMES_API}/news/v3/content/section-list.json`)
   if (res.ok) {
     const results = await res.json()
     return results
