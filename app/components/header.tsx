@@ -31,7 +31,7 @@ export default function Submenu() {
   }, [matches])
 
   return (
-    <div className="border-b-2 border-dotted border-gray-600 m-4">
+    <header className="border-b-2 border-dotted border-gray-600 m-4">
       <Heading></Heading>
       <div className="hidden m-2 lg:flex lg:flex-row lg:space-y-0 flex-col items-center space-y-1 justify-evenly">
         {menuLinks
@@ -77,6 +77,6 @@ export default function Submenu() {
           <option value={'list'}>More...</option>
         </select>
       </div>
-    </div>
+    </header>
   )
 }

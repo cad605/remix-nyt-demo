@@ -1,20 +1,5 @@
 import { LogoIcon } from './icons'
 import formatDate from 'date-fns/format'
-import parseISO from 'date-fns/parseISO'
-
-function Logo() {
-  return (
-    <a
-      href="https://www.nytimes.com"
-      rel="noopener noreferrer"
-      target={'_blank'}
-      aria-label="The New York Times"
-      className="grow"
-    >
-      <LogoIcon></LogoIcon>
-    </a>
-  )
-}
 
 export default function Heading() {
   return (
@@ -24,7 +9,15 @@ export default function Heading() {
           {formatDate(new Date(), 'PPPP')}
         </p>
       </div>
-      <Logo></Logo>
+      <a
+        href="https://www.nytimes.com"
+        rel="noopener noreferrer"
+        target={'_blank'}
+        aria-label="The New York Times"
+        className="grow"
+      >
+        <LogoIcon></LogoIcon>
+      </a>
       <div className="hidden lg:flex justify-end">
         <a
           href="https://developer.nytimes.com/"

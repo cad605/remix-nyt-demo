@@ -6,7 +6,7 @@ import { Article } from '~/models/article'
 function TopStoriesCard({ data }: { data: Article }) {
   const { title, url, kicker, published_date, subsection } = data
   return (
-    <div className="pt-4 flex flex-col space-y-4">
+    <article className="pt-4 flex flex-col space-y-4">
       <MetadataRow
         subsection={subsection}
         kicker={kicker}
@@ -14,14 +14,14 @@ function TopStoriesCard({ data }: { data: Article }) {
       ></MetadataRow>
       <h1 className="text-black text-md lg:text-lg font-bold">{title}</h1>
       <ActionRow url={url}></ActionRow>
-    </div>
+    </article>
   )
 }
 
 function LatestCard({ data }: { data: Article }) {
   const { title, abstract, multimedia, url } = data
   return (
-    <div className="pt-4 flex flex-col space-y-4">
+    <article className="pt-4 flex flex-col space-y-4">
       <div className="flex flex-row space-x-4 items-center">
         <h1 className="text-black text-base lg:text-md font-bold grow">
           {title}
@@ -38,7 +38,7 @@ function LatestCard({ data }: { data: Article }) {
         {abstract}
       </p>
       <ActionRow url={url}></ActionRow>
-    </div>
+    </article>
   )
 }
 

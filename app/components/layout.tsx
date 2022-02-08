@@ -1,5 +1,5 @@
 import Navbar from './navbar'
-import Submenu from './submenu'
+import Submenu from './header'
 
 function SidebarLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -9,7 +9,7 @@ function SidebarLayout({ children }: { children: React.ReactNode }) {
 
 function SidebarNav({ children }: { children: React.ReactNode }) {
   return (
-    <header
+    <aside
       className="flex flex-col lg:order-first lg:flex-row"
       children={children}
     />
@@ -33,7 +33,7 @@ export function VScrollChild({
   className?: string
 }) {
   return (
-    <div
+    <main
       className={`m-6 flex flex-col flex-shrink-0 order-1 ${className}`}
       children={children}
     />
